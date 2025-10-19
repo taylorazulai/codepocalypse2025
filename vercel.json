@@ -1,0 +1,21 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "/api/$1"
+    }
+  ],
+  "builds": [
+    {
+      "src": "public/**",
+      "use": "@vercel/static-build",
+      "config": {
+        "outputDirectory": "public"
+      }
+    },
+    {
+      "src": "api/*.js",
+      "use": "@vercel/node"
+    }
+  ]
+}

@@ -1,0 +1,386 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Internet's Last Will & Testament</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+        <style>
+            body {
+                font-family: "Times New Roman", serif;
+                background-color: #fdf6e3;
+                color: #333;
+                line-height: 1.6;
+                padding: 20px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                min-height: 100vh;
+            }
+            .container {
+                max-width: 700px;
+                width: 100%;
+                margin: auto;
+                background: #fffaf0;
+                padding: 40px;
+                border: 2px solid #d2b48c;
+                box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            }
+            h2,
+            h3,
+            h4 {
+                text-align: center;
+                font-family: "Georgia", serif;
+            }
+            /* MODIFIED: Added a container for labels and errors */
+            .form-field {
+                margin-bottom: 15px;
+            }
+            label {
+                display: block;
+                margin-bottom: 5px;
+                font-weight: bold;
+            }
+            input[type="text"],
+            textarea {
+                width: 100%;
+                padding: 8px;
+                border-radius: 4px;
+                border: 1px solid #ddd;
+                box-sizing: border-box;
+                font-family: sans-serif;
+            }
+            button {
+                background-color: #8b4513;
+                color: white;
+                padding: 12px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                font-size: 1.2em;
+                font-weight: bold;
+                display: block;
+                width: 100%;
+                font-family: "Georgia", serif;
+                margin-bottom: 10px;
+            }
+            button:hover {
+                background-color: #a0522d;
+            }
+            .subtext {
+                text-align: center;
+                margin-top: 10px;
+            }
+            #will-output {
+                line-height: 1.8;
+                padding: 20px;
+                border: 1px dashed #d2b48c;
+                background-color: #fff;
+            }
+            .sharing-section {
+                margin-top: 30px;
+                border-top: 1px solid #d2b48c;
+                padding-top: 20px;
+            }
+            .social-icons {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 20px; /* Space between icons */
+                flex-wrap: wrap; /* NEW: Allows items to wrap to the next line */
+            }
+            .social-icons a {
+                font-size: 1.2em; /* Adjusted to fit text better, feel free to change */
+                color: #8b4513;
+                text-decoration: none;
+                transition: transform 0.2s;
+                display: flex; /* Makes the whole link behave as a flex item */
+                align-items: center; /* Vertically aligns text and emoji */
+                gap: 5px; /* Small gap between emoji and text */
+                padding: 5px 10px; /* Added some padding for better clickability */
+                border: 1px solid #d2b48c; /* Optional: adds a subtle border to each button */
+                border-radius: 5px; /* Optional: rounded corners */
+                background-color: #f7f0e0; /* Optional: light background for contrast */
+            }
+            .social-icons a:hover {
+                transform: scale(1.05); /* Slightly less dramatic hover for larger buttons */
+                background-color: #e0d8c8;
+            }
+
+            }
+            /* NEW: Style for the validation error messages */
+            .error-message {
+                color: #d8000c; /* Bright Red */
+                font-weight: bold;
+                font-size: 0.9em;
+                margin-top: 5px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container" id="main-container">
+            <h2 id="form-title">The Internet's Last Will & Testament</h2>
+            <form id="will-form">
+                <!-- MODIFIED: Wrapped fields in a div for better error placement -->
+                <div class="form-field">
+                    <label for="fullName">Your Name:</label>
+                    <input type="text" id="fullName" name="fullName" />
+                </div>
+
+                <div class="form-field">
+                    <label for="website">Your most visited website:</label>
+                    <input type="text" id="website" name="website" />
+                </div>
+
+                <div class="form-field">
+                    <label for="playlist"
+                        >Your favorite Spotify/Apple Music playlist:</label
+                    >
+                    <input type="text" id="playlist" name="playlist" />
+                </div>
+
+                <div class="form-field">
+                    <label for="workApp">Your least favorite work app:</label>
+                    <input type="text" id="workApp" name="workApp" />
+                </div>
+
+                <div class="form-field">
+                    <label for="bestFriend">Your best friend's name:</label>
+                    <input type="text" id="bestFriend" name="bestFriend" />
+                </div>
+
+                <!-- NEW FIELD ADDED -->
+                <div class="form-field">
+                    <label for="socialPlatform"
+                        >Your favorite social media platform:</label
+                    >
+                    <input
+                        type="text"
+                        id="socialPlatform"
+                        name="socialPlatform"
+                        placeholder="e.g., Twitter, TikTok, etc."
+                    />
+                </div>
+
+                <!-- FIELD LABEL CHANGED -->
+                <div class="form-field">
+                    <label for="socialHandle"
+                        >Your handle for that platform:</label
+                    >
+                    <input
+                        type="text"
+                        id="socialHandle"
+                        name="socialHandle"
+                        placeholder="@yourhandle"
+                    />
+                </div>
+
+                <div class="form-field">
+                    <label for="trend"
+                        >Your least favorite internet trend right now:</label
+                    >
+                    <input type="text" id="trend" name="trend" />
+                </div>
+
+                <div class="form-field">
+                    <label for="signature">Your email signature:</label>
+                    <textarea
+                        id="signature"
+                        name="signature"
+                        rows="3"
+                    ></textarea>
+                </div>
+
+                <button type="submit">GENERATE MY WILL NOW!</button>
+                <p class="subtext">
+                    <em
+                        >Don't wait until it's too late. Secure your digital
+                        legacy before you're forced to go touch grass. Besides,
+                        it's the only way to legally ensure your cat inherits
+                        your Twitter account.</em
+                    >
+                </p>
+            </form>
+        </div>
+
+        <script>
+            // Store the initial HTML of the main container when the page first loads
+            const initialContainerHTML =
+                document.getElementById("main-container").innerHTML;
+
+            function downloadWillAsImage() {
+                const willElement = document.getElementById(
+                    "will-output-content",
+                );
+
+                html2canvas(willElement, {
+                    backgroundColor: "#fffaf0",
+                    scale: 2,
+                }).then((canvas) => {
+                    const link = document.createElement("a");
+                    link.download = "My-Internet-Will.png";
+                    link.href = canvas.toDataURL("image/png");
+                    link.click();
+                });
+            }
+
+            function resetFormView() {
+                document.getElementById("main-container").innerHTML =
+                    initialContainerHTML;
+                // We need to re-attach the submit listener because we replaced the form HTML
+                document
+                    .getElementById("will-form")
+                    .addEventListener("submit", handleFormSubmission);
+            }
+
+            // A new function to encapsulate the form submission logic
+            async function handleFormSubmission(event) {
+                event.preventDefault();
+
+                // --- 1. Validation (remains the same) ---
+                const existingErrors =
+                    document.querySelectorAll(".error-message");
+                existingErrors.forEach((error) => error.remove());
+
+                let isValid = true;
+                const fieldsToValidate = [
+                    {
+                        id: "fullName",
+                        message: "An anonymous will? How mysterious!",
+                    },
+                    {
+                        id: "website",
+                        message:
+                            "Surely you visited *one* site. We won't judge.",
+                    },
+                    {
+                        id: "playlist",
+                        message: "No theme song for the apocalypse? Risky.",
+                    },
+                    {
+                        id: "workApp",
+                        message:
+                            "You must love ALL your work apps? Impossible.",
+                    },
+                    {
+                        id: "bestFriend",
+                        message: "Don't leave your bestie hanging!",
+                    },
+                    {
+                        id: "socialPlatform",
+                        message:
+                            "Where do you post your memes? The world needs to know.",
+                    },
+                    {
+                        id: "socialHandle",
+                        message: "How will we tag you in our farewell posts?",
+                    },
+                    {
+                        id: "trend",
+                        message:
+                            "Hating on something is the spice of life. Pick one.",
+                    },
+                    {
+                        id: "signature",
+                        message:
+                            'No classic sign-off? Not even a "Sent from my iPhone"?',
+                    },
+                ];
+                fieldsToValidate.forEach((field) => {
+                    const input = document.getElementById(field.id);
+                    if (input.value.trim() === "") {
+                        isValid = false;
+                        const error = document.createElement("p");
+                        error.className = "error-message";
+                        error.textContent = field.message;
+                        input.parentNode.appendChild(error);
+                    }
+                });
+                if (!isValid) return;
+
+                // --- 2. Collect User Data (remains the same) ---
+                const formData = {
+                    fullName: document.getElementById("fullName").value,
+                    website: document.getElementById("website").value,
+                    playlist: document.getElementById("playlist").value,
+                    workApp: document.getElementById("workApp").value,
+                    bestFriend: document.getElementById("bestFriend").value,
+                    socialPlatform:
+                        document.getElementById("socialPlatform").value,
+                    socialHandle: document.getElementById("socialHandle").value,
+                    trend: document.getElementById("trend").value,
+                    signature: document.getElementById("signature").value,
+                };
+
+                // --- 3. UPDATED: Call your Vercel Serverless Function ---
+                const container = document.getElementById("main-container");
+                container.innerHTML =
+                    "<h3>📜 Generating your masterpiece... The digital spirits are contemplating your legacy...</h3>";
+
+                try {
+                    const response = await fetch("/api/generate-will", {
+                        // <-- IMPORTANT: Call your Vercel function
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify(formData), // Send the form data to your function
+                    });
+
+                    if (!response.ok) {
+                        const errorData = await response.json();
+                        throw new Error(
+                            `Proxy function error: ${response.status} ${response.statusText} - ${JSON.stringify(errorData)}`,
+                        );
+                    }
+
+                    const data = await response.json();
+                    // The serverless function now returns an object with a 'will' property
+                    const aiGeneratedWill = data.will;
+
+                    // --- 4. Display the AI-generated will and sharing options (remains largely the same) ---
+                    const shareUrl = window.location.href;
+                    const shareText = encodeURIComponent(
+                        "I just crafted my Internet's Last Will & Digital Testament! See what happens to your digital legacy when the web dies. #Codepocalypse #DigitalWill",
+                    );
+
+                    const twitterUrl = `https://twitter.com/intent/tweet?url=${shareUrl}&text=${shareText}`;
+                    const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${shareUrl}`;
+                    const whatsappUrl = `https://api.whatsapp.com/send?text=${shareText}%20${shareUrl}`;
+                    const uspsUrl = `https://www.usps.com/international/mail-shipping-services.htm`;
+
+                    container.innerHTML = `
+                        <div id="will-output">
+                            <div id="will-output-content" style="white-space: pre-wrap; padding: 20px; font-size: 1.1em;">${aiGeneratedWill}</div>
+                        </div>
+                        <br>
+                        <button onclick="downloadWillAsImage()">Download for the Archives (PNG)</button>
+                        <div class="sharing-section">
+                          <h4>SHARE YOUR RESULTS</h4>
+                          <div class="social-icons">
+                              <a href="${twitterUrl}" target="_blank" title="Share on Twitter">🐦 Twitter</a>
+                              <a href="${facebookUrl}" target="_blank" title="Share on Facebook">👍 Facebook</a>
+                              <a href="${whatsappUrl}" target="_blank" title="Share on WhatsApp">💬 WhatsApp</a>
+                              <a href="https://www.instagram.com" target="_blank" title="Post your downloaded will on Instagram!">📸 Instagram</a>
+                              <a href="${uspsUrl}" target="_blank" title="For when you must send this via Snail Mail.">🐌 Snail Mail</a>
+                          </div>
+                        </div>
+                        <br>
+                        <button onclick="resetFormView()">START OVER</button>
+                    `;
+                } catch (error) {
+                    console.error("Error in generating will:", error);
+                    container.innerHTML = `
+                        <h3>An Error Occurred!</h3>
+                        <p>The digital spirits (or your Vercel proxy server) seem to be on a coffee break. Please check your browser's console (F12) for more details on the error and try again.</p>
+                        <br>
+                        <button onclick="resetFormView()">TRY AGAIN</button>
+                    `;
+                }
+            }
+
+            // Attach the main form submission listener to our new handler function
+            document
+                .getElementById("will-form")
+                .addEventListener("submit", handleFormSubmission);
+        </script>
+    </body>
+</html>

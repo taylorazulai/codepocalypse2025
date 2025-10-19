@@ -1,0 +1,9 @@
+# .gitignore
+# Vercel environment variables for local development
+.env.local
+
+# Node.js dependencies
+node_modules/
+
+# Build output directory (if you had one, e.g., for Next.js)
+.vercel/
