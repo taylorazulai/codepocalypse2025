@@ -7,3 +7,4 @@ node_modules/
 
 # Build output directory (if you had one, e.g., for Next.js)
 .vercel/
+.vercel
